@@ -2,10 +2,13 @@
   hosts: localhost
   connection: local
   tasks:
+    # ========================================================
+    # yum install
+    # ========================================================
     - name: wgetインストール
       yum:  name=wget
-    - name: ディレクトリーを作る
-      file: path=/etc/ansible/sampledir state=touch owner=root group=root mode=0644
+    - name: gitインストール
+      yum:  name=git
 
     # ========================================================
     # Javaのインストール
