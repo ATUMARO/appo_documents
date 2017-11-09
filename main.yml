@@ -38,5 +38,6 @@
     # ========================================================
     # テンプレート追加
     # ========================================================
+    - name: bash_profile書き換え
     - template: src=templates/.bash_profile dest=~/.bash_profile owner=bin group=wheel mode=0644
 
