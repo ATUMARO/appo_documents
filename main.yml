@@ -1,4 +1,4 @@
-- name: BigData環境構築
+- name: BigData擬似分散モード
   hosts: localhost
   connection: local
   tasks:
@@ -17,7 +17,7 @@
       register: java_which
       failed_when: java_which.rc not in [0, 1]
 
-    - name: Java インストール
+    - name: Javaインストール
       yum: name=java-1.8.0-openjdk-devel
       when: java_which.rc == 1
     # ========================================================
@@ -25,8 +25,11 @@
     # ========================================================
     - name: CDHのrpmを貼る
       yum: templates/cloudera-cdh-5-0.x86_64.rpm
-     - name: pseudoインストール
+    - name: hadoop-conf-pseudoインストール
       yum: name=hadoop-conf-pseudo
+    - name: hadoop-conf-pseudoインストール
+      service: name=httpd state=started
+
 #
 #    # ========================================================
 #    # HBaseのインストール
