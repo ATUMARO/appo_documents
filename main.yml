@@ -27,8 +27,6 @@
       yum: templates/cloudera-cdh-5-0.x86_64.rpm
     - name: hadoop-conf-pseudoインストール
       yum: name=hadoop-conf-pseudo
-    - name: hadoop-conf-pseudoインストール
-      service: name=httpd state=started
 
 #
 #    # ========================================================
