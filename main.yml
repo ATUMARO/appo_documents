@@ -24,7 +24,7 @@
     # CDHインストール
     # ========================================================
     - name: rpmを貼る
-      yum: templates/cloudera-cdh-5-0.x86_64.rpm
+      yum: name=templates/cloudera-cdh-5-0.x86_64.rpm
     - name: hadoop-conf-pseudoインストール
       yum: name=hadoop-conf-pseudo
 
