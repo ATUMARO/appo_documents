@@ -24,9 +24,8 @@
     # ========================================================
     # CDHインストール
     # ========================================================
-    - name: CDHのrpmを貼る
-      rpm: state=installed file=templates/cloudera-cdh-5-0.x86_64.rpm
-      yum: name=hadoop-conf-pseudo
+    - name: CDHインストール
+      yum: name=templates/cloudera-cdh-5-0.x86_64.rpm
 #
 #    # ========================================================
 #    # HBaseのインストール
