@@ -35,5 +35,7 @@
       yum: name=templates/elasticsearch-6.0.0.rpm
     - name: ElasticSearchインストール
       yum: name=elasticsearch
+    - name: set auto start nginx
+      command: chkconfig nginx on
     - name: restart nginx
-      service: state=restarted
+      command: service nginx restart
