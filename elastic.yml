@@ -46,3 +46,7 @@
       command: chkconfig nginx on
     - name: restart nginx
       command: service nginx restart
+    - name: restart elasticsearch
+      command: service elasticsearch restart
+    - name: restart kibana
+      command: service kibana restart
