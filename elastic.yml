@@ -31,5 +31,10 @@
     # ========================================================
     # ElasticSearch
     # ========================================================
+    - name: rpmを貼る
+      yum: name=templates/elasticsearch-6.0.0.rpm
     - name: ElasticSearchインストール
       yum: name=elasticsearch
+   handlers:
+     - name: restart nginx
+       service: name=nginx state=restarted
