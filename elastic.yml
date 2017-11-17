@@ -35,6 +35,13 @@
       yum: name=templates/elasticsearch-6.0.0.rpm
     - name: ElasticSearchインストール
       yum: name=elasticsearch
+    # ========================================================
+    # Kibana
+    # ========================================================
+    - name: rpmを貼る
+      yum: name=templates/kibana-6.0.0-x86_64.rpm
+    - name: ElasticSearchインストール
+      yum: name=kibana
     - name: set auto start nginx
       command: chkconfig nginx on
     - name: restart nginx
