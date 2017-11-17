@@ -1,0 +1,35 @@
+- name: BigData擬似分散モード
+  hosts: localhost
+  connection: local
+  tasks:
+    # ========================================================
+    # yum common install
+    # ========================================================
+    - name: wgetインストール
+      yum:  name=wget
+    - name: lsofインストール
+      yum:  name=lsof
+    - name: gitインストール
+      yum:  name=git
+    # ========================================================
+    # Java
+    # ========================================================
+    - name: javaの存在確認
+      shell: which java
+      register: java_which
+      failed_when: java_which.rc not in [0, 1]
+    - name: Javaインストール
+      yum: name=java-1.8.0-openjdk-devel
+      when: java_which.rc == 1
+    # ========================================================
+    # nginx
+    # ========================================================
+    - name: nginxインストール
+      yum:  name=templates/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+    - name: nginx yum
+      yum:  name=nginx
+    # ========================================================
+    # ElasticSearch
+    # ========================================================
+    - name: ElasticSearchインストール
+      yum: name=elasticsearch
