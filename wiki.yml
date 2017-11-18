@@ -24,7 +24,7 @@
     - name: rpmを貼る
       yum:  name=templates/remi-release-7.rpm
     - name: PHPインストール
-      yum: name=remi,remi-php70 php php-devel php-mbstring php-pdo php-gd php70-php-fpm
+      yum: name=remi-php70 php70-php-fpm
 
       #php-fpm setting
     - command: chkconfig php-fpm on
