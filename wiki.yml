@@ -20,18 +20,3 @@
       yum:  name=nginx
     # ========================================================
     # php
-    # ========================================================
-    - name: PHPのrpm
-      yum:  name=templates/remi-release-7.rpm
-    - name: phpインストール
-      yum: name=remi-php70
-    - name: php-fpmインストール
-      yum: name=php70-php-fpm
-    - name: set auto start nginx
-      command: chkconfig nginx on
-    - name: set auto start php-fpm
-      command: chkconfig php-fpm on
-    - name: rchkconfignginx
-      command: service nginx restart
-    - name: rchkconfig php-fpm on
-      command: service php-fpm restart
