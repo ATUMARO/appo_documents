@@ -1,4 +1,4 @@
-- name: BigData擬似分散モード
+- name: 全文検索
   hosts: localhost
   connection: local
   tasks:

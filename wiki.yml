@@ -1,0 +1,25 @@
+- name: wiki環境
+  hosts: localhost
+  connection: local
+  tasks:
+    # ========================================================
+    # yum common install
+    # ========================================================
+    - name: wgetインストール
+      yum:  name=wget
+    - name: lsofインストール
+      yum:  name=lsof
+    - name: gitインストール
+      yum:  name=git
+    # ========================================================
+    # nginx
+    # ========================================================
+    - name: nginxインストール
+      yum:  name=templates/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+    - name: nginx yum
+      yum:  name=nginx
+    # ========================================================
+    # php
+    # ========================================================
+    - name: rpmを貼る
+      yum: name=epel-release
