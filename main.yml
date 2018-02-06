@@ -40,9 +40,40 @@
     # ========================================================
     - name: Hbaseインストール
       yum:  name=hbase-master
-#    # ========================================================
-#    # テンプレート追加
-#    # ========================================================
-#    - name: bash_profile書き換え
-#      template: src=templates/.bash_profile dest=/home/ishizukyousuke/.bash_profile owner=bin group=wheel mode=0644
-
+    # ========================================================
+    # 初期化 起動時のセット
+    # ========================================================
+    - name: hdfsをフォーマット
+      shell: sudo -u hdfs hdfs namenode -format
+    - name: hdfs start
+      shell: for x in `cd /etc/init.d ; ls hadoop-hdfs-*` ; do sudo service $x start ; done
+    - name: hdfsを初期化
+      shell: sudo /usr/lib/hadoop/libexec/init-hdfs.sh
+    - name: set auto start nginx
+      command: chkconfig nginx on
+    - name: set auto start hadoop-yarn-resourcemanager
+      command: chkconfig hadoop-yarn-resourcemanager on
+    - name: set auto start hadoop-yarn-nodemanager
+      command: chkconfig hadoop-yarn-nodemanager on
+    - name: set auto start hadoop-mapreduce-historyserver
+      command: chkconfig hadoop-mapreduce-historyserver on
+    # ========================================================
+    # restart
+    # ========================================================
+    - name: restart nginx
+      command: service nginx restart
+    - name: restart hadoop-yarn-resourcemanager
+      command: service hadoop-yarn-resourcemanager restart
+    - name: restart hadoop-yarn-nodemanager
+      command: service hadoop-yarn-nodemanager restart
+    - name: restart hadoop-mapreduce-historyserver
+      command: service hadoop-mapreduce-historyserver restart
+    # ========================================================
+    # HBase
+    # ========================================================
+    - name: Hbaseインストール
+      yum:  name=hbase-master
+    - name: set auto start hbase-master
+      command: chkconfig hbase-master on
+    - name: restart hbase-master
+      command: service hbase-master restart
