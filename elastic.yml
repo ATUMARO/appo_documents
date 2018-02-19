@@ -39,7 +39,7 @@
     # Kibana
     # ========================================================
     - name: rpmを貼る
-      yum: name=templates/kibana-6.2.1-x86_64.rpm
+      yum: name=templates/kibana-6.0.0-x86_64.rpm
     - name: ElasticSearchインストール
       yum: name=kibana
     - name: set auto start nginx
